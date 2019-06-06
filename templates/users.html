@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/user_style.css') }}">
+        <title>Real(All)</title>
+    </head>
+    <body style="text-align: center;">
+        <h1>All Users</h1><br>
+        <table>
+            <tr class="thead" style="background-color: gray;">
+                <td>ID</td>
+                <td>Full Name</td>
+                <td>Email</td>
+                <td>Created At</td>
+                <td>Actions</td>
+            </tr>
+            {% for one_user in all_users: %}
+            {% if one_user["id"]%2 == 1: %}
+            <tr class="trow" style="background: lightgray;">
+                <td> {{one_user["id"]}} </td>
+                <td> {{one_user["first_name"]}} {{one_user["last_name"]}}</td>
+                <td> {{one_user["email"]}} </td>
+                <td> {{one_user["created_at"]}} </td>
+                <td>
+                    <a href="/users/{{one_user['id']}}">Show </a><p>|</p>
+                    <a href="/users/{{one_user['id']}}/edit">Edit </a><p>|</p>
+                    <a href="">Delete</a>
+                </td>
+            </tr>
+                {% else: %}
+            <tr class="trow">
+                <td> {{one_user["id"]}} </td>
+                <td> {{one_user["first_name"]}} {{one_user["last_name"]}}</td>
+                <td> {{one_user["email"]}} </td>
+                <td> {{one_user["created_at"]}} </td>
+                <td>
+                    <a href="/users/{{one_user['id']}}">Show </a><p>|</p>
+                    <a href="/users/{{one_user['id']}}/edit">Edit </a><p>|</p>
+                    <a href="">Delete</a>
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table><br>
+        <center> <a href="/users/new">Add a New Users</a></center>
+    </body>
+</html>

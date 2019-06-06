@@ -1,0 +1,13 @@
+* {
+    margin: 0 auto;
+    padding: 0xp;
+    text-align: center;
+}
+
+input {
+    width: 250px;
+}
+
+p {
+    font-weight: bold;
+}
